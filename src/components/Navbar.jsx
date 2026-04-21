@@ -140,19 +140,36 @@ const Navbar = () => {
       className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg border"
     >
       {moreLinks.map((link) =>
-        link.path.endsWith(".pdf") ||
-        link.path.endsWith(".jpg") ||
-        link.path.endsWith(".png") ? (
-          <a
-            key={link.path}
-            href={link.path}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block px-4 py-2 text-sm hover:bg-gray-100"
-          >
-            {link.label}
-          </a>
-        ) : (
+       link.path.endsWith(".pdf") ? (
+  <div key={link.path} className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 rounded">
+    <a
+      href={link.path}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-600"
+    >
+      {link.label}
+    </a>
+
+    <a
+      href={link.path}
+      download
+      className="text-xs text-blue-600 hover:underline ml-2"
+    >
+      Download
+    </a>
+  </div>
+) : link.path.endsWith(".jpg") || link.path.endsWith(".png") ? (
+  <a
+    key={link.path}
+    href={link.path}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block px-4 py-2 text-sm hover:bg-gray-100"
+  >
+    {link.label}
+  </a>
+) : (
           <Link
             key={link.path}
             to={link.path}
