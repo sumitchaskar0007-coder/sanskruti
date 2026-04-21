@@ -29,38 +29,26 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-<<<<<<< HEAD
-=======
   // Scroll shadow effect
->>>>>>> d6d1840 (update build)
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-<<<<<<< HEAD
-=======
   // Close menus on route change
->>>>>>> d6d1840 (update build)
   useEffect(() => {
     setIsOpen(false);
     setShowMore(false);
   }, [location.pathname]);
 
-<<<<<<< HEAD
-=======
   // Lock body scroll when mobile menu open
->>>>>>> d6d1840 (update build)
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => (document.body.style.overflow = "auto");
   }, [isOpen]);
 
-<<<<<<< HEAD
-=======
   // Main navigation links
->>>>>>> d6d1840 (update build)
   const mainLinks = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -73,20 +61,14 @@ const Navbar = () => {
     { label: "Contact", path: "/contact" },
   ];
 
-<<<<<<< HEAD
-=======
   // Additional dropdown links
->>>>>>> d6d1840 (update build)
   const moreLinks = [
     { label: "Gallery", path: "/gallery" },
     { label: "Blog", path: "/blog" },
     { label: "Announcements", path: "/announcements" },
     { label: "Careers", path: "/career" },
-<<<<<<< HEAD
     { label: "Hamipatra", path: "/pdf/hamipatra.pdf" },
-     { label: "Fees", path: "/images/fees.jpg" }
-=======
->>>>>>> d6d1840 (update build)
+    { label: "Fees", path: "/images/fees.jpg" }
   ];
 
   return (
@@ -100,10 +82,7 @@ const Navbar = () => {
       {/* TOP BAR */}
       <div className="max-w-[1400px] mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-3">
-<<<<<<< HEAD
-=======
           {/* LOGO */}
->>>>>>> d6d1840 (update build)
           <Link to="/" className="flex-shrink-0">
             <img
               src="/images/logo1.png"
@@ -112,32 +91,16 @@ const Navbar = () => {
             />
           </Link>
 
-<<<<<<< HEAD
-          <div className="flex-1 text-center px-2">
-            <h2 className="font-bold text-primary leading-tight text-sm sm:text-lg md:text-2xl lg:text-3xl">
-=======
           {/* TITLE */}
           <div className="flex-1 text-center px-2">
             <h2
               className="font-bold text-primary leading-tight
               text-sm sm:text-lg md:text-2xl lg:text-3xl"
             >
->>>>>>> d6d1840 (update build)
               Sanskruti Techno School
             </h2>
           </div>
 
-<<<<<<< HEAD
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md hover:bg-gray-100"
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor">
-              {isOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-=======
           {/* MOBILE TOGGLE BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -164,7 +127,6 @@ const Navbar = () => {
                   strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
->>>>>>> d6d1840 (update build)
               )}
             </svg>
           </button>
@@ -176,11 +138,7 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-<<<<<<< HEAD
-              className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md ${
-=======
               className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md transition ${
->>>>>>> d6d1840 (update build)
                 location.pathname === link.path
                   ? "bg-primary text-white"
                   : "text-gray-700 hover:bg-gray-100"
@@ -196,63 +154,6 @@ const Navbar = () => {
             onMouseEnter={() => setShowMore(true)}
             onMouseLeave={() => setShowMore(false)}
           >
-<<<<<<< HEAD
-            <button className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100">
-              More ▾
-            </button>
-
-           <AnimatePresence>
-  {showMore && (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg border"
-    >
-      {moreLinks.map((link) =>
-       link.path.endsWith(".pdf") ? (
-  <div key={link.path} className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 rounded">
-    <a
-      href={link.path}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-600"
-    >
-      {link.label}
-    </a>
-
-    <a
-      href={link.path}
-      download
-      className="text-xs text-blue-600 hover:underline ml-2"
-    >
-      Download
-    </a>
-  </div>
-) : link.path.endsWith(".jpg") || link.path.endsWith(".png") ? (
-  <a
-    key={link.path}
-    href={link.path}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block px-4 py-2 text-sm hover:bg-gray-100"
-  >
-    {link.label}
-  </a>
-) : (
-          <Link
-            key={link.path}
-            to={link.path}
-            className="block px-4 py-2 text-sm hover:bg-gray-100"
-          >
-            {link.label}
-          </Link>
-        )
-      )}
-    </motion.div>
-  )}
-</AnimatePresence>
-=======
             <button
               className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100"
               aria-haspopup="true"
@@ -269,19 +170,57 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 10 }}
                   className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg border"
                 >
-                  {moreLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className="block px-4 py-2 text-sm hover:bg-gray-100"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                  {moreLinks.map((link) => {
+                    // Handle PDF files
+                    if (link.path.endsWith(".pdf")) {
+                      return (
+                        <div key={link.path} className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 rounded">
+                          <a
+                            href={link.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600"
+                          >
+                            {link.label}
+                          </a>
+                          <a
+                            href={link.path}
+                            download
+                            className="text-xs text-blue-600 hover:underline ml-2"
+                          >
+                            Download
+                          </a>
+                        </div>
+                      );
+                    }
+                    // Handle image files
+                    if (link.path.endsWith(".jpg") || link.path.endsWith(".png")) {
+                      return (
+                        <a
+                          key={link.path}
+                          href={link.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          {link.label}
+                        </a>
+                      );
+                    }
+                    // Handle regular links
+                    return (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className="block px-4 py-2 text-sm hover:bg-gray-100"
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
                 </motion.div>
               )}
             </AnimatePresence>
->>>>>>> d6d1840 (update build)
           </div>
         </div>
       </div>
@@ -289,9 +228,6 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
-<<<<<<< HEAD
-          <motion.div className="lg:hidden fixed top-[110px] right-0 w-full h-[calc(100vh-110px)] bg-white overflow-y-auto shadow-lg">
-=======
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -299,7 +235,6 @@ const Navbar = () => {
             transition={{ type: "tween", duration: 0.3 }}
             className="lg:hidden fixed top-[110px] right-0 w-full h-[calc(100vh-110px)] bg-white overflow-y-auto shadow-lg"
           >
->>>>>>> d6d1840 (update build)
             <div className="px-4 py-4 space-y-1 pb-20">
               {mainLinks.map((link) => (
                 <Link
@@ -311,37 +246,54 @@ const Navbar = () => {
                 </Link>
               ))}
 
-<<<<<<< HEAD
-              <button
-                onClick={() => setShowMore(!showMore)}
-                className="w-full text-left px-4 py-3 font-medium rounded-lg hover:bg-gray-100"
-=======
               {/* MOBILE MORE TOGGLE */}
               <button
                 onClick={() => setShowMore(!showMore)}
                 className="w-full text-left px-4 py-3 font-medium rounded-lg hover:bg-gray-100"
                 aria-expanded={showMore}
->>>>>>> d6d1840 (update build)
               >
                 More ▾
               </button>
 
               <AnimatePresence>
                 {showMore && (
-<<<<<<< HEAD
-                  <motion.div className="ml-4">
-                    {moreLinks.map((link) =>
-                      link.path.endsWith(".pdf") ? (
-                        <a
-                          key={link.path}
-                          href={link.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
-                        >
-                          {link.label}
-                        </a>
-                      ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="ml-4"
+                  >
+                    {moreLinks.map((link) => {
+                      // Handle PDF files in mobile
+                      if (link.path.endsWith(".pdf")) {
+                        return (
+                          <a
+                            key={link.path}
+                            href={link.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                          >
+                            {link.label}
+                          </a>
+                        );
+                      }
+                      // Handle image files in mobile
+                      if (link.path.endsWith(".jpg") || link.path.endsWith(".png")) {
+                        return (
+                          <a
+                            key={link.path}
+                            href={link.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                          >
+                            {link.label}
+                          </a>
+                        );
+                      }
+                      // Handle regular links in mobile
+                      return (
                         <Link
                           key={link.path}
                           to={link.path}
@@ -349,35 +301,14 @@ const Navbar = () => {
                         >
                           {link.label}
                         </Link>
-                      )
-                    )}
-=======
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="ml-4"
-                  >
-                    {moreLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
->>>>>>> d6d1840 (update build)
+                      );
+                    })}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           </motion.div>
-<<<<<<< HEAD
-        )}  
-=======
         )}
->>>>>>> d6d1840 (update build)
       </AnimatePresence>
     </nav>
   );

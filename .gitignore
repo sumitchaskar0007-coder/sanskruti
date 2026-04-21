@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5a837c5 (Updated .gitignore)
 # ========================
 # Dependencies
 # ========================
@@ -8,6 +11,7 @@ node_modules/
 .yarn/
 
 # ========================
+<<<<<<< HEAD
 # Logs
 # ========================
 logs/
@@ -15,11 +19,17 @@ logs/
 # Logs
 logs
 >>>>>>> d6d1840 (update build)
+=======
+# Logs
+# ========================
+logs/
+>>>>>>> 5a837c5 (Updated .gitignore)
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 # ========================
@@ -47,17 +57,43 @@ Thumbs.db
 .idea/
 =======
 lerna-debug.log*
+=======
+>>>>>>> 5a837c5 (Updated .gitignore)
 
-node_modules
+# ========================
+# Build / Production
+# ========================
+dist/
+build/
+out/
+.next/
+.cache/
 
+# ========================
+# Environment files
+# ========================
+.env
+.env.*
 *.local
 
-# Editor directories and files
+# ========================
+# OS files
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# Editor / IDE
+# ========================
 .vscode/*
 !.vscode/extensions.json
+<<<<<<< HEAD
 .idea
 .DS_Store
 >>>>>>> d6d1840 (update build)
+=======
+.idea/
+>>>>>>> 5a837c5 (Updated .gitignore)
 *.suo
 *.ntvs*
 *.njsproj
@@ -65,6 +101,9 @@ node_modules
 *.sw?
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5a837c5 (Updated .gitignore)
 # ========================
 # Misc
 # ========================
@@ -72,6 +111,7 @@ coverage/
 *.tgz
 *.gz
 *.zip
+<<<<<<< HEAD
 
 # ========================
 # Optional (uncomment if needed)
@@ -88,3 +128,11 @@ coverage/
 
 
 >>>>>>> d6d1840 (update build)
+=======
+
+# ========================
+# Optional (uncomment if needed)
+# ========================
+# public/uploads/
+# database.sqlite
+>>>>>>> 5a837c5 (Updated .gitignore)
