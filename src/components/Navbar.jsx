@@ -29,26 +29,22 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Scroll shadow effect
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menus on route change
   useEffect(() => {
     setIsOpen(false);
     setShowMore(false);
   }, [location.pathname]);
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => (document.body.style.overflow = "auto");
   }, [isOpen]);
 
-  // Main navigation links
   const mainLinks = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -61,12 +57,13 @@ const Navbar = () => {
     { label: "Contact", path: "/contact" },
   ];
 
-  // Additional dropdown links
   const moreLinks = [
     { label: "Gallery", path: "/gallery" },
     { label: "Blog", path: "/blog" },
     { label: "Announcements", path: "/announcements" },
     { label: "Careers", path: "/career" },
+    { label: "Hamipatra", path: "/pdf/hamipatra.pdf" },
+     { label: "Fees", path: "/images/fees.jpg" }
   ];
 
   return (
@@ -80,7 +77,6 @@ const Navbar = () => {
       {/* TOP BAR */}
       <div className="max-w-[1400px] mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-3">
-          {/* LOGO */}
           <Link to="/" className="flex-shrink-0">
             <img
               src="/images/logo1.png"
@@ -89,42 +85,21 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* TITLE */}
           <div className="flex-1 text-center px-2">
-            <h2
-              className="font-bold text-primary leading-tight
-              text-sm sm:text-lg md:text-2xl lg:text-3xl"
-            >
+            <h2 className="font-bold text-primary leading-tight text-sm sm:text-lg md:text-2xl lg:text-3xl">
               Sanskruti Techno School
             </h2>
           </div>
 
-          {/* MOBILE TOGGLE BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-md hover:bg-gray-100"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor">
               {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -136,7 +111,7 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md transition ${
+              className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-md ${
                 location.pathname === link.path
                   ? "bg-primary text-white"
                   : "text-gray-700 hover:bg-gray-100"
@@ -152,34 +127,44 @@ const Navbar = () => {
             onMouseEnter={() => setShowMore(true)}
             onMouseLeave={() => setShowMore(false)}
           >
-            <button
-              className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100"
-              aria-haspopup="true"
-              aria-expanded={showMore}
-            >
+            <button className="px-4 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-100">
               More ▾
             </button>
 
-            <AnimatePresence>
-              {showMore && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg border"
-                >
-                  {moreLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className="block px-4 py-2 text-sm hover:bg-gray-100"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+           <AnimatePresence>
+  {showMore && (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg border"
+    >
+      {moreLinks.map((link) =>
+        link.path.endsWith(".pdf") ||
+        link.path.endsWith(".jpg") ||
+        link.path.endsWith(".png") ? (
+          <a
+            key={link.path}
+            href={link.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block px-4 py-2 text-sm hover:bg-gray-100"
+          >
+            {link.label}
+          </a>
+        ) : (
+          <Link
+            key={link.path}
+            to={link.path}
+            className="block px-4 py-2 text-sm hover:bg-gray-100"
+          >
+            {link.label}
+          </Link>
+        )
+      )}
+    </motion.div>
+  )}
+</AnimatePresence>
           </div>
         </div>
       </div>
@@ -187,13 +172,7 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
-            className="lg:hidden fixed top-[110px] right-0 w-full h-[calc(100vh-110px)] bg-white overflow-y-auto shadow-lg"
-          >
+          <motion.div className="lg:hidden fixed top-[110px] right-0 w-full h-[calc(100vh-110px)] bg-white overflow-y-auto shadow-lg">
             <div className="px-4 py-4 space-y-1 pb-20">
               {mainLinks.map((link) => (
                 <Link
@@ -205,38 +184,43 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              {/* MOBILE MORE TOGGLE */}
               <button
                 onClick={() => setShowMore(!showMore)}
                 className="w-full text-left px-4 py-3 font-medium rounded-lg hover:bg-gray-100"
-                aria-expanded={showMore}
               >
                 More ▾
               </button>
 
               <AnimatePresence>
                 {showMore && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="ml-4"
-                  >
-                    {moreLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
+                  <motion.div className="ml-4">
+                    {moreLinks.map((link) =>
+                      link.path.endsWith(".pdf") ? (
+                        <a
+                          key={link.path}
+                          href={link.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={link.path}
+                          to={link.path}
+                          className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           </motion.div>
-        )}
+        )}  
       </AnimatePresence>
     </nav>
   );
