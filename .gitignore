@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ========================
 # Dependencies
 # ========================
@@ -10,11 +11,16 @@ node_modules/
 # Logs
 # ========================
 logs/
+=======
+# Logs
+logs
+>>>>>>> d6d1840 (update build)
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+<<<<<<< HEAD
 
 # ========================
 # Build / Production
@@ -39,12 +45,26 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea/
+=======
+lerna-debug.log*
+
+node_modules
+
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+>>>>>>> d6d1840 (update build)
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
+<<<<<<< HEAD
 # ========================
 # Misc
 # ========================
@@ -58,3 +78,13 @@ coverage/
 # ========================
 # public/uploads/
 # database.sqlite
+=======
+
+
+
+
+
+
+
+
+>>>>>>> d6d1840 (update build)
